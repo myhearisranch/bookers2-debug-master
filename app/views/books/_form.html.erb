@@ -8,10 +8,20 @@
     <%= f.text_area :body, class: 'form-control book_body' %>
   </div>
   <div class="form-group">
-    <% if book.new_record? %>
-      <%= f.submit "Create Book", class: "btn btn-success" %>
-    <% else %>
+
+    <!--trueかfalseで分岐させたいからとりあえずisnewというtrueかfalseを入れる変数を定義-->
+
+   <% if isnew %>
+     <%= f.submit "Create Book", class: "btn btn-success" %>
+      <% else %>
       <%= f.submit "Update Book", class: "btn btn-success" %>
     <% end %>
+
+    <!--new_record?を使いたかったけどうまくいかなかった -->
+    <%# if f.object.new_record? %>
+      <%#=<f.submit "Create Book", class: "btn btn-success" %>
+    <%# else %>
+      <%#= f.submit "Update Book", class: "btn btn-success" %>
+    <%# end %>
   </div>
 <% end %>

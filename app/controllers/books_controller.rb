@@ -1,16 +1,22 @@
 class BooksController < ApplicationController
 before_action :correct_user, only: [:edit, :update]
 
+# コントローラーで疑似的にnew_recordメソッドを変数として再現
+# 新規投稿だと @isnew=true
+# 既に投稿されていると　@isnew= falseを
+# フォームを表示する全てのコントローラーに記述する
+
   def show
     @book_form = Book.new
     @book = Book.find(params[:id])
     @user = @book.user
+    @isnew = true
   end
 
   def index
     @books = Book.all
     @book = Book.new
-
+    @isnew = true
   end
 
   def create
@@ -26,6 +32,7 @@ before_action :correct_user, only: [:edit, :update]
 
   def edit
     @book = Book.find(params[:id])
+    @isnew = false
   end
 
 
