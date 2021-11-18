@@ -9,13 +9,14 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
     @book = Book.new
-    @isnew = true
+    @book_form = Book.new
+
   end
 
   def index
     @users = User.all
     @book = Book.new
-    @isnew = true
+
   end
 
   def edit
@@ -26,10 +27,13 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path(@user), notice: "You have updated user successfully."
     else
-       @user = User.find(params[:id])
+      #↓の@userは上書きしてしまうので
+       #@user = User.find(params[:id])
        @books = @user.books
        @book = Book.new
-      render "show"
+       @book_form = Book.new
+       
+      render "edit"
     end
   end
 

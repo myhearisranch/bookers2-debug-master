@@ -10,13 +10,12 @@ before_action :correct_user, only: [:edit, :update]
     @book_form = Book.new
     @book = Book.find(params[:id])
     @user = @book.user
-    @isnew = true
   end
 
   def index
     @books = Book.all
     @book = Book.new
-    @isnew = true
+
   end
 
   def create
@@ -32,7 +31,7 @@ before_action :correct_user, only: [:edit, :update]
 
   def edit
     @book = Book.find(params[:id])
-    @isnew = false
+
   end
 
 

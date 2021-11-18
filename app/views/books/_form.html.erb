@@ -11,17 +11,17 @@
 
     <!--trueかfalseで分岐させたいからとりあえずisnewというtrueかfalseを入れる変数を定義-->
 
-   <% if isnew %>
-     <%= f.submit "Create Book", class: "btn btn-success" %>
-      <% else %>
-      <%= f.submit "Update Book", class: "btn btn-success" %>
-    <% end %>
-
-    <!--new_record?を使いたかったけどうまくいかなかった -->
-    <%# if f.object.new_record? %>
-      <%#=<f.submit "Create Book", class: "btn btn-success" %>
-    <%# else %>
+   <%# if isnew %>
+     <%#= f.submit "Create Book", class: "btn btn-success" %>
+      <%# else %>
       <%#= f.submit "Update Book", class: "btn btn-success" %>
     <%# end %>
+
+    <!--new_record?を使いたかったけどうまくいかなかった -->
+    <% if f.object.new_record? %>
+      <%= f.submit "Create Book", class: "btn btn-success" %>
+    <% else %>
+      <%= f.submit "Update Book", class: "btn btn-success" %>
+    <% end %>
   </div>
 <% end %>
