@@ -46,8 +46,13 @@ before_action :correct_user, only: [:edit, :update]
   end
 
   def destroy
-    @book = Book.find(params[:id])
+    #↓が無いとBook loadという記述が無くなる
+   @book = Book.find(params[:id])
+
+    #↓が無いとBook Destroyという記述が無くなる
     @book.destroy
+
+    #↓が無いとRedirected to という記述が無くなる
     redirect_to books_path
   end
 

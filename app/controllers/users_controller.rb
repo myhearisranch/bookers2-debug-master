@@ -27,13 +27,14 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path(@user), notice: "You have updated user successfully."
     else
-      #↓の@userは上書きしてしまうので
+      #↓の@userは上書きしてしまうのでいらない
        #@user = User.find(params[:id])
        @books = @user.books
        @book = Book.new
        @book_form = Book.new
-       
-      render "edit"
+
+       #render "show"だと一瞬、更新される(リロードすると元に戻る)
+      render "show"
     end
   end
 
